@@ -2,12 +2,12 @@ console.log("scripts.js loaded successfully!");
 
 const products = {
     "Burgers": [
-        { name: "Cheeseburger", image: "assets/burger.jpg", description: "Delicious cheeseburger with fresh ingredients.", model: "assets/burger.glb" },
-        { name: "Veggie Burger", image: "assets/veggie-burger.jpg", description: "Healthy veggie burger with organic veggies.", model: "assets/veggie-burger.glb" }
+        { name: "Cheeseburger", image: "assets/burger.jpg", description: "Delicious cheeseburger with fresh ingredients.", model: "burger.glb" },
+        { name: "Veggie Burger", image: "assets/veggie-burger.jpg", description: "Healthy veggie burger with organic veggies.", model: "veggie-burger.glb" }
     ],
     "Pizzas": [
-        { name: "Margherita Pizza", image: "assets/pizza.jpg", description: "Classic margherita with fresh basil and cheese.", model: "assets/pizza.glb" },
-        { name: "Pepperoni Pizza", image: "assets/pepperoni.jpg", description: "Spicy pepperoni pizza with rich cheese.", model: "assets/pepperoni.glb" }
+        { name: "Margherita Pizza", image: "assets/pizza.jpg", description: "Classic margherita with fresh basil and cheese.", model: "pizza.glb" },
+        { name: "Pepperoni Pizza", image: "assets/pepperoni.jpg", description: "Spicy pepperoni pizza with rich cheese.", model: "pepperoni.glb" }
     ]
 };
 
@@ -59,8 +59,11 @@ function loadProducts() {
         productDiv.classList.add("product");
         productDiv.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name} <button onclick="viewAR('${product.model}')">View in AR</button></h3>
+            <h3>${product.name}</h3>
             <p>${product.description}</p>
+            <button onclick="viewAR('${product.model}')">
+                View in AR <img src="assets/ar-icon.png" class="ar-icon">
+            </button>
         `;
         container.appendChild(productDiv);
     });
@@ -69,6 +72,5 @@ function loadProducts() {
 }
 
 function viewAR(model) {
-    console.log(`Opening AR model: ${model}`);
     window.location.href = `ar.html?model=${model}`;
 }
