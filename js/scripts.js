@@ -75,5 +75,6 @@ function loadProducts() {
 }
 
 function viewAR(model) {
+    console.log(`Opening AR model: ${model}`);
     window.location.href = `ar.html?model=${model}`;
 }
