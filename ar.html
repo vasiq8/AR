@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View in AR</title>
-    <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -21,22 +21,34 @@
         style="width: 100%; height: 500px; background: #eee;">
     </model-viewer>
 
+    <button class="ar-button" onclick="viewInAR()">View in AR</button>
+
     <p id="error-message" style="display: none; color: red;">⚠️ AR is not supported on this device/browser.</p>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const model = urlParams.get('model');
 
-        console.log("Model to load:", model); // Debugging log
+        console.log("Model to load:", model);
 
         if (model) {
             const viewer = document.getElementById('arViewer');
-            const modelPath = `assets/${model}`;
-            
-            viewer.setAttribute('src', modelPath);
-            viewer.setAttribute('ios-src', modelPath); // For iOS Quick Look
+            const modelPathGLB = `assets/${model}`;
+            const modelPathUSDZ = model.replace('.glb', '.usdz'); // Convert for iOS
+
+            viewer.setAttribute('src', modelPathGLB);
+            viewer.setAttribute('ios-src', `assets/${modelPathUSDZ}`);
         } else {
             document.getElementById('error-message').style.display = "block";
+        }
+
+        function viewInAR() {
+            let viewer = document.getElementById("arViewer");
+            if (viewer.canActivateAR) {
+                viewer.activateAR();
+            } else {
+                alert("AR is not supported on your device or browser.");
+            }
         }
     </script>
 </body>
