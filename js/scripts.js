@@ -8,6 +8,9 @@ const products = {
     "Pizzas": [
         { name: "Margherita Pizza", image: "assets/pizza.jpg", description: "Classic margherita with fresh basil and cheese.", model: "pizza.glb" },
         { name: "Pepperoni Pizza", image: "assets/pepperoni.jpg", description: "Spicy pepperoni pizza with rich cheese.", model: "pepperoni.glb" }
+    ],
+    "Slimes": [
+        { name: "Green Slime", image: "assets/slime.jpg", description: "A fun, squishy green slime!", model: "slime.glb" }
     ]
 };
 
