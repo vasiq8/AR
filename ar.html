@@ -9,12 +9,35 @@
 </head>
 <body>
     <h1>3D Product View</h1>
-    <model-viewer id="arViewer" src="" alt="3D Model" auto-rotate camera-controls ar ar-modes="webxr scene-viewer quick-look"></model-viewer>
+
+    <model-viewer id="arViewer"
+        src=""
+        alt="3D Model"
+        auto-rotate 
+        camera-controls 
+        ar 
+        ar-modes="webxr scene-viewer quick-look"
+        ios-src=""
+        style="width: 100%; height: 500px; background: #eee;">
+    </model-viewer>
+
+    <p id="error-message" style="display: none; color: red;">⚠️ AR is not supported on this device/browser.</p>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const model = urlParams.get('model');
-        document.getElementById('arViewer').setAttribute('src', `assets/${model}`);
+
+        console.log("Model to load:", model); // Debugging log
+
+        if (model) {
+            const viewer = document.getElementById('arViewer');
+            const modelPath = `assets/${model}`;
+            
+            viewer.setAttribute('src', modelPath);
+            viewer.setAttribute('ios-src', modelPath); // For iOS Quick Look
+        } else {
+            document.getElementById('error-message').style.display = "block";
+        }
     </script>
 </body>
 </html>
