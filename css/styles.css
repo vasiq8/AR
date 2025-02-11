@@ -52,8 +52,16 @@ button {
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 button:hover {
     background: #444;
+}
+
+.ar-icon {
+    width: 20px;
+    height: 20px;
 }
