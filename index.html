@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tijarah360 AR Menu</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1 id="restaurant-name">Tijarah360</h1>
+    
+    <label for="category">Select Category:</label>
+    <select id="category" onchange="loadProducts()">
+        <option value="">-- Choose a Category --</option>
+    </select>
+    
+    <div id="product-container" class="scroll-container"></div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

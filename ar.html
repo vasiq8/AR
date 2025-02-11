@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View in AR</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>View in AR</h1>
+    <model-viewer id="arModel" src="" ar auto-rotate camera-controls></model-viewer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const model = urlParams.get('model');
+        document.getElementById('arModel').setAttribute('src', `assets/${model}`);
+    </script>
+</body>
+</html>
