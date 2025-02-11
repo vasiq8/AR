@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>View in AR</h1>
-    <model-viewer id="arModel" src="" ar auto-rotate camera-controls></model-viewer>
+    <h1>3D Product View</h1>
+    <model-viewer id="arViewer" src="" alt="3D Model" auto-rotate camera-controls ar ar-modes="webxr scene-viewer quick-look"></model-viewer>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const model = urlParams.get('model');
-        document.getElementById('arModel').setAttribute('src', `assets/${model}`);
+        document.getElementById('arViewer').setAttribute('src', `assets/${model}`);
     </script>
 </body>
 </html>
